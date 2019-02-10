@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { bool, node } from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
@@ -7,7 +6,7 @@ import Footer from './footer'
 import './layout.css'
 
 interface LayoutProps {
-  hideFooter: boolean
+  hideFooter?: boolean
 }
 
 const Layout: FC<LayoutProps> = ({ children, hideFooter }) => (
