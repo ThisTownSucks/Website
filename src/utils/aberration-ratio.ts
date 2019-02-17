@@ -3,5 +3,5 @@ interface Rect {
   bottom: number
 }
 
-export const aberrationRatio = (rect: Rect, height: number, amt: number) =>
+export const aberrationRatio = (rect: Rect, height: number, amt: number = 2) =>
   ((height - rect.top - rect.bottom) / height) * amt
