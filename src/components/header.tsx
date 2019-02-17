@@ -7,9 +7,9 @@ interface HLP {
   name: string
 }
 
-const HeaderLink: FC<HLP> = ({url, name}) => (
+const HeaderLink: FC<HLP> = ({ url, name }) => (
   <Link
-    to={`/${url}/`}
+    to={`${url}`}
     style={{
       color: `black`,
       textDecoration: `none`,
@@ -27,12 +27,13 @@ const Header = ({ siteTitle }) => (
       padding: `1.45rem 1.0875rem`,
     }}
   >
+    <h1>{siteTitle}</h1>
     <h2>
-      <HeaderLink url='' name={siteTitle} />
+      <HeaderLink url="/" name={'Home'} />
       <br />
-      <HeaderLink url='manifesto' name='Manifesto' />
+      <HeaderLink url="/manifesto/" name="Manifesto" />
       <br />
-      <HeaderLink url='about' name='About' />
+      <HeaderLink url="/about/" name="About" />
     </h2>
   </div>
 )
