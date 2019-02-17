@@ -1,8 +1,1 @@
-{
-  "extends": ["plugin:prettier/recommended"],
-  "plugins": ["react-hooks"],
-  "rules": {
-    "react-hooks/rules-of-hooks": 2,
-    "react-hooks/reactive-deps": 2
-  }
-}
+{}
