@@ -16,10 +16,11 @@
     "gatsby-source-filesystem": "^2.0.20",
     "gatsby-transformer-sharp": "^2.1.8",
     "prop-types": "^15.6.2",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "react": ">16.8",
+    "react-dom": ">16.8",
     "react-helmet": "^5.2.0",
     "react-typography": "^0.16.18",
+    "the-platform": "^0.9.3",
     "typography": "^0.16.18"
   },
   "keywords": [
