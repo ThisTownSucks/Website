@@ -16,8 +16,8 @@
     "gatsby-source-filesystem": "^2.0.20",
     "gatsby-transformer-sharp": "^2.1.8",
     "prop-types": "^15.6.2",
-    "react": ">16.8",
-    "react-dom": ">16.8",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
     "react-helmet": "^5.2.0",
     "react-typography": "^0.16.18",
     "the-platform": "^0.9.3",
@@ -36,6 +36,10 @@
   },
   "devDependencies": {
     "@types/react-helmet": "^5.0.8",
+    "eslint": "^5.14.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react-hooks": "^1.1.0-alpha.0",
     "prettier": "^1.15.2"
   },
   "repository": {
