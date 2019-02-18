@@ -15,9 +15,7 @@ const Icon = styled.svg`
   stroke-width: 2px;
 `
 
-interface HidCheckProps {
-  onChange: ChangeEvent
-}
+interface HidCheckProps { onChange: any } // TODO: Figure out the type
 
 // Hide checkbox visually but remain accessible to screen readers.
 // Source: https://polished.js.org/docs/#hidevisually
@@ -35,11 +33,13 @@ const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })<HidCheckProps>`
   width: 1px;
 `
 
-const StyledCheckbox = styled.div`
+interface StyledCBProps { checked: boolean }
+
+const StyledCheckbox = styled.div<StyledCBProps>`
   display: inline-block;
   width: 26px;
   height: 26px;
-  background: ${(props: { checked: boolean }) =>
+  background: ${(props) =>
     props.checked ? 'salmon' : 'papayawhip'};
   border-radius: 3px;
   transition: all 150ms;
