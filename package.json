@@ -35,12 +35,17 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "format": "prettier --write \"src/**/*.js\"",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch"
   },
   "devDependencies": {
     "@types/react-helmet": "^5.0.8",
     "@types/styled-components": "^4.1.10",
-    "prettier": "^1.15.2"
+    "gatsby-plugin-tslint": "^0.0.2",
+    "prettier": "^1.15.2",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.3"
   },
   "repository": {
     "type": "git",

@@ -89,7 +89,7 @@ const Questions = () => {
               <FieldArray name="people"
               render={(helpers) => (
                   <div>
-                      <Checkbox className="test" checked={values.q4.answer} /* onChange={handleChange} */ />
+                      <Checkbox className="test" checked={values.q4.answer} onChange={handleChange} />
                       <label htmlFor="q1">
                         <Title>{surveyQuestions['q1']}</Title>
                         <Field name={'q1'} />

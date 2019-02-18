@@ -2,7 +2,7 @@
 // ☝️reference article
 
 import React, { FunctionComponent, ChangeEvent } from 'react'
-import styled from 'styled-components'
+import styled, { StyledComponentBase } from 'styled-components'
 
 const CheckboxContainer = styled.div`
   display: inline-block;
@@ -14,9 +14,15 @@ const Icon = styled.svg`
   stroke: white;
   stroke-width: 2px;
 `
+
+interface HidCheckProps {
+  onChange: ChangeEvent
+}
+
 // Hide checkbox visually but remain accessible to screen readers.
 // Source: https://polished.js.org/docs/#hidevisually
-const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
+// TODO: How to type style-components with additional component-level props ?
+const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })<HidCheckProps>`
   border: 0;
   clip: rect(0 0 0 0);
   clippath: inset(50%);
@@ -49,13 +55,15 @@ const StyledCheckbox = styled.div`
 
 interface CBProps {
   className: string
+  name: string
   checked: boolean
-  // onChange: ChangeEvent
+  onChange: ChangeEvent
 }
 
 export const Checkbox: FunctionComponent<CBProps> = ({
   className,
   checked,
+  // name,
   ...props
 }) => (
   <CheckboxContainer className={className}>
