@@ -1,26 +1,10 @@
-// https://medium.com/@colebemis/building-a-checkbox-component-with-react-and-styled-components-8d3aa1d826dd
-// ☝️reference article
-
 import React, { FunctionComponent, ChangeEvent } from 'react'
 import styled, { StyledComponentBase } from 'styled-components'
+import { Field } from 'formik'
 
-const CheckboxContainer = styled.div`
-  display: inline-block;
-  vertical-align: middle;
-`
-
-const Icon = styled.svg`
-  fill: none;
-  stroke: white;
-  stroke-width: 2px;
-`
-
-interface HidCheckProps { onChange: any } // TODO: Figure out the type
-
-// Hide checkbox visually but remain accessible to screen readers.
-// Source: https://polished.js.org/docs/#hidevisually
-// TODO: How to type style-components with additional component-level props ?
-const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })<HidCheckProps>`
+const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
+  /* Hide checkbox visually but remain accessible to screen readers.
+     Source: https://polished.js.org/docs/#hidevisually */
   border: 0;
   clip: rect(0 0 0 0);
   clippath: inset(50%);
@@ -33,14 +17,19 @@ const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })<HidCheckProps>`
   width: 1px;
 `
 
-interface StyledCBProps { checked: boolean }
+const Icon = styled.svg`
+  fill: none;
+  stroke: white;
+  stroke-width: 2px;
+`
 
-const StyledCheckbox = styled.div<StyledCBProps>`
+type StyledCheckboxP = { checked: boolean }
+
+const StyledCheckbox = styled.div<StyledCheckboxP>`
   display: inline-block;
-  width: 26px;
-  height: 26px;
-  background: ${(props) =>
-    props.checked ? 'salmon' : 'papayawhip'};
+  width: 16px;
+  height: 16px;
+  background: ${props => (props.checked ? 'salmon' : 'papayawhip')};
   border-radius: 3px;
   transition: all 150ms;
 
@@ -53,25 +42,41 @@ const StyledCheckbox = styled.div<StyledCBProps>`
   }
 `
 
-interface CBProps {
-  className: string
+const CheckboxContainer = styled.div`
+  display: inline-block;
+  vertical-align: middle;
+`
+
+type Props = {
   name: string
-  checked: boolean
-  onChange: ChangeEvent
+  value: boolean
 }
 
-export const Checkbox: FunctionComponent<CBProps> = ({
-  className,
-  checked,
-  // name,
-  ...props
-}) => (
-  <CheckboxContainer className={className}>
-    <HiddenCheckbox checked={checked} {...props} />
-    <StyledCheckbox checked={checked}>
-      <Icon viewBox="0 0 24 24">
-        <polyline points="20 6 9 17 4 12" />
-      </Icon>
-    </StyledCheckbox>
-  </CheckboxContainer>
-)
+export const Checkbox: FunctionComponent<Props> = ({ name, value }) => {
+  return (
+    <Field name={name}>
+      {({ field, form }) => (
+        <label>
+          <CheckboxContainer>
+            <HiddenCheckbox
+              checked={value}
+              onChange={() => {
+                form.setFieldValue(name, !value)
+              }}
+            />
+            <StyledCheckbox
+              checked={value}
+              onChange={() => {
+                form.setFieldValue(name, !value)
+              }}
+            >
+              <Icon viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </Icon>
+            </StyledCheckbox>
+          </CheckboxContainer>
+        </label>
+      )}
+    </Field>
+  )
+}
