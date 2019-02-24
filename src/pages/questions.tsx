@@ -73,9 +73,9 @@ export const initialValues: FormValues = {
   q1: '',
   q2: '',
   q3: '',
-  q4: {answer: false, followUp: ['', '', '', '']},
-  q5: {answer: false, followUp: ['', '', '', '', '']},
-  q6: {answer: false, followUp: ['', '']},
+  q4: { answer: false, followUp: ['', '', '', ''] },
+  q5: { answer: false, followUp: ['', '', '', '', ''] },
+  q6: { answer: false, followUp: ['', ''] },
 }
 
 const Questions = () => {
@@ -86,44 +86,45 @@ const Questions = () => {
         onSubmit={(values: FormValues) => console.log(values)}
         render={({ handleSubmit, errors, touched, values, handleChange }) => (
           <Form>
-              <FieldArray name="people"
-              render={(helpers) => (
-                  <div>
-                      <Checkbox className="test" checked={values.q4.answer} onChange={handleChange} />
-                      <label htmlFor="q1">
-                        <Title>{surveyQuestions['q1']}</Title>
-                        <Field name={'q1'} />
-                        <Title>{surveyQuestions['q2']}</Title>
-                        <Field name={'q2'} />
-                        <Title>{surveyQuestions['q3']}</Title>
-                        <Field name={'q3'} />
-                      </label>
-                      <label htmlFor="q4">
-                      <Title>{surveyQuestions['q4']['title']}</Title>
-                        <input type="checkbox" name="q4.answer" checked={values.q4.answer} onChange={handleChange}/>
-                      </label>
-                      {values.q4.answer && (
-                          values.q4.followUp.map((_value, index) => (
-                              <React.Fragment key={`q4.${index}`}>
-                                  <Field name={`q4.${index}`} render={(innerProps: FieldProps) => (
-                                      <TextField {...innerProps} title={surveyQuestions['q4']['followUp'][index]} index={index}/>
-                                  )}/>
-                                  {/* <label htmlFor="pet">
-                                      <div>Pet</div>
-                                      <Field name={`people.${index}.pet`} component="select">
-                                          <option value="Dog">Dog</option>
-                                          <option value="Cat">Cat</option>
-                                          <option value="Other">Other</option>
-                                      </Field>
-                                  </label> */}
-                              </React.Fragment>
-                          ))
-                      )}
+            <FieldArray
+              name="questions"
+              render={helpers => (
+                <div>
+                  <label htmlFor="q1">
+                    <Title>{surveyQuestions['q1']}</Title>
+                    <Field name={'q1'} />
+                    <Title>{surveyQuestions['q2']}</Title>
+                    <Field name={'q2'} />
+                    <Title>{surveyQuestions['q3']}</Title>
+                    <Field name={'q3'} />
+                  </label>
+                  <label htmlFor="q4">
+                    <Title>{surveyQuestions['q4']['title']}</Title>
+                    <Checkbox name="q4.answer" value={values.q4.answer} />
+                  </label>
+                  {values.q4.answer &&
+                    values.q4.followUp.map((_value, index) => (
+                      <React.Fragment key={`q4.${index}`}>
+                        <Field
+                          name={`q4.${index}`}
+                          render={(innerProps: FieldProps) => (
+                            <TextField
+                              {...innerProps}
+                              title={surveyQuestions['q4']['followUp'][index]}
+                              index={index}
+                            />
+                          )}
+                        />
+                      </React.Fragment>
+                    ))}
+                  <br />
                   <button type="submit">Submit</button>
-                  </div>
-              )}/>
+                </div>
+              )}
+            />
           </Form>
-      )} />
+        )}
+      />
     </Layout>
   )
 }

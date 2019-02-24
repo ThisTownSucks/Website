@@ -1,6 +1,11 @@
 import React, { FunctionComponent, ChangeEvent } from 'react'
-import styled, { StyledComponentBase } from 'styled-components'
+import styled, { StyledComponentBase, StyledComponent } from 'styled-components'
 import { Field } from 'formik'
+
+const CheckboxContainer = styled.div`
+  display: inline-block;
+  vertical-align: middle;
+`
 
 const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
   /* Hide checkbox visually but remain accessible to screen readers.
@@ -23,9 +28,7 @@ const Icon = styled.svg`
   stroke-width: 2px;
 `
 
-type StyledCheckboxP = { checked: boolean }
-
-const StyledCheckbox = styled.div<StyledCheckboxP>`
+const StyledCheckbox = styled.div<{ checked: boolean }>`
   display: inline-block;
   width: 16px;
   height: 16px;
@@ -40,11 +43,6 @@ const StyledCheckbox = styled.div<StyledCheckboxP>`
   ${Icon} {
     visibility: ${props => (props.checked ? 'visible' : 'hidden')};
   }
-`
-
-const CheckboxContainer = styled.div`
-  display: inline-block;
-  vertical-align: middle;
 `
 
 type Props = {
