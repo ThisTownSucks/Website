@@ -5,7 +5,6 @@ module.exports = {
     author: `Dan Minshew, Patrick Carr`,
   },
   plugins: [
-    'gatsby-plugin-tslint',
     `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-plugin-typography`,
