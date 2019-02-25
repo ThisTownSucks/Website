@@ -1,10 +1,12 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "this-town-sucks--website",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "We can all agree about one thing...",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Dan Minshew, Patrick Carr",
   "dependencies": {
+    "babel-plugin-styled-components": "^1.10.0",
+    "formik": "^1.5.0",
     "gatsby": "^2.1.4",
     "gatsby-image": "^2.0.20",
     "gatsby-plugin-catch-links": "^2.0.11",
@@ -12,6 +14,7 @@
     "gatsby-plugin-offline": "^2.0.16",
     "gatsby-plugin-react-helmet": "^3.0.2",
     "gatsby-plugin-sharp": "^2.0.14",
+    "gatsby-plugin-styled-components": "^3.0.5",
     "gatsby-plugin-typescript": "^2.0.8",
     "gatsby-plugin-typography": "^2.2.5",
     "gatsby-source-filesystem": "^2.0.22",
@@ -19,9 +22,10 @@
     "gatsby-transformer-sharp": "^2.1.8",
     "prop-types": "^15.6.2",
     "react": "^16.8.0",
-    "react-dom": "^16.8.0",
+    "react-dom": "npm:@hot-loader/react-dom",
     "react-helmet": "^5.2.0",
     "react-typography": "^0.16.18",
+    "styled-components": "^4.1.3",
     "the-platform": "^0.9.3",
     "typography": "^0.16.18"
   },
@@ -31,13 +35,16 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "start": "npm run develop",
     "format": "prettier --write \"src/**/*.js\"",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch"
   },
   "devDependencies": {
     "@types/react-helmet": "^5.0.8",
+    "@types/styled-components": "^4.1.10",
     "prettier": "^1.15.2"
   },
   "repository": {
