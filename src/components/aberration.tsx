@@ -2,11 +2,13 @@ import React, { useEffect, useRef, useState, FunctionComponent } from 'react'
 import { useWindowSize } from 'the-platform'
 import { aberrationRatio } from '../utils'
 
-const Aberration: FunctionComponent<{ text?: string }> = ({ text }) => {
+const Aberration: FunctionComponent = ({ children }) => {
   const ref = useRef(null)
+  const innerContentRef = useRef(null)
   const { height } = useWindowSize()
   const [rect, setRect] = useState({ top: 0, bottom: 0 })
   const [ratio, setRatio] = useState(0)
+  const [innerContentHeight, setInnerContentHeight] = useState('100%')
 
   const getRatio = () => {
     setRect(ref.current.getBoundingClientRect())
@@ -19,10 +21,16 @@ const Aberration: FunctionComponent<{ text?: string }> = ({ text }) => {
     return () => window.removeEventListener('scroll', getRatio)
   })
 
+  useEffect(() => {
+    setInnerContentHeight(
+      innerContentRef.current.getBoundingClientRect().height
+    )
+  })
+
   return (
-    <div>
+    <div style={{ mixBlendMode: 'multiply' }}>
       {/* prettier-ignore */}
-      <svg viewBox="0 0 100 100">
+      <svg style={{overflow: "visible"}} width="100%" height={innerContentHeight}>
         <defs>
           <filter id="aberration">
             <feOffset id="cyan" in="SourceGraphic" result="cyanOffset" dx="0" dy={ratio} />
@@ -59,9 +67,14 @@ const Aberration: FunctionComponent<{ text?: string }> = ({ text }) => {
             <feBlend mode="multiply" in="yellowMatrix" in2="cyanAndMagenta" />
           </filter>
         </defs>
-        <text ref={ref} filter="url(#aberration)" fontSize="10" x="0" y="10%">
-          {text}
-        </text>
+          <foreignObject
+            ref={ref}
+            filter="url(#aberration)"
+            style={{overflow: "visible"}}
+            height="100%"
+            width="100%">
+            <div ref={innerContentRef}>{children}</div>
+          </foreignObject>
       </svg>
     </div>
   )

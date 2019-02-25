@@ -13,7 +13,9 @@ const IndexPage = () => {
         description="Example description"
       />
       <h1>Landing Page</h1>
-      <Aberration text="This Town Sucks" />
+      <Aberration>
+        <h2>This Town Sucks</h2>
+      </Aberration>
     </Layout>
   )
 }
