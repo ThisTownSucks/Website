@@ -11,7 +11,7 @@ export const FormInput = styled.input`
   border-color: gray;
   border: 1px solid;
   padding: 5px 5px;
-  margin-bottom: 5px;
+  margin-bottom: 2em;
 `
 
 export const InputError = styled.div`
@@ -27,12 +27,7 @@ interface Props {
 
 type OwnProps = FieldProps<FormValues> & Props
 
-export const TextField: React.SFC<OwnProps> = ({
-  title,
-  field,
-  form,
-  index,
-}) => (
+export const TextField: React.SFC<OwnProps> = ({ title, field, form, index }) => (
   <label htmlFor={field.name}>
     <Title>{title}</Title>
     <FormInput type="text" {...field} />
