@@ -30,19 +30,16 @@ const Icon = styled.svg`
 
 const StyledCheckbox = styled.div<{ checked: boolean }>`
   display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: ${props => (props.checked ? 'salmon' : 'papayawhip')};
+  width: 60px;
+  height: 60px;
+  /* background: ${props => (props.checked ? 'salmon' : 'papayawhip')}; */
   border-radius: 3px;
   transition: all 150ms;
 
   ${HiddenCheckbox}:focus + & {
-    box-shadow: 0 0 0 3px pink;
+    box-shadow: 0 0 0 3px tomato;
   }
 
-  ${Icon} {
-    visibility: ${props => (props.checked ? 'visible' : 'hidden')};
-  }
 `
 
 type Props = {
@@ -68,8 +65,23 @@ export const Checkbox: FunctionComponent<Props> = ({ name, value }) => {
                 form.setFieldValue(name, !value)
               }}
             >
-              <Icon viewBox="0 0 24 24">
-                <polyline points="20 6 9 17 4 12" />
+              <Icon viewBox="0 0 62 62">
+                {value ? (
+                  <path
+                    d="M44.5 3L2 12V53.5H44.5L57 29.5L44.5 3Z"
+                    fill="#423E3E"
+                    stroke="black"
+                    strokeWidth="4"
+                  />
+                ) : (
+                  <path
+                    d="M44.5 2.5L2 11.5V53H44.5L57 29L44.5 2.5Z"
+                    fill="none"
+                    stroke="black"
+                    strokeWidth="4"
+                  />
+                )}
+                {/* <polyline points="20 6 9 17 4 12" /> */}
               </Icon>
             </StyledCheckbox>
           </CheckboxContainer>

@@ -34,6 +34,8 @@ const Header = ({ siteTitle }) => (
       <HeaderLink url="/manifesto/" name="Manifesto" />
       <br />
       <HeaderLink url="/about/" name="About" />
+      <br />
+      <HeaderLink url="/blog/" name="Blog" />
     </h2>
   </div>
 )
